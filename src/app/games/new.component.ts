@@ -29,5 +29,6 @@ export class NewGame implements OnInit {
 
   startGame(postData): void {
     console.log(JSON.stringify(postData));
+    this.router.navigate(['/game', 1])
   }
 }

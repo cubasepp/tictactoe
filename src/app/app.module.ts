@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './404.component';
 
 import { Game } from './games/game.component'
 import { NewGame } from './games/new.component';
+import { PlayerHandlingDirective } from './games/gamesboard.directive';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
     DashboardComponent,
     PageNotFoundComponent,
     Game,
-    NewGame
+    NewGame,
+    PlayerHandlingDirective
   ],
   imports: [
     BrowserModule,
