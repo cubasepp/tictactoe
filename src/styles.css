@@ -2,3 +2,9 @@
 body {
   padding-top: 5rem;
 }
+
+.form-newgame {
+    max-width: 450px;
+    padding: 15px;
+    margin: 0 auto;
+}

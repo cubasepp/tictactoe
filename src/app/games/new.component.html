@@ -1,1 +1,23 @@
-<h3> New Game</h3>
+<form [formGroup]="newGameForm" class="form-newgame" (ngSubmit)="startGame(newGameForm.value)">
+  <h2> Please enter your Names </h2>
+  <br />
+
+  <div *ngIf="(playerone.invalid && (playerone.dirty || playerone.touched)) || (playertwo.invalid && (playertwo.dirty || playertwo.touched))" class="alert alert-danger">
+     <div *ngIf="playerone.invalid && playerone.errors.required || playertwo.invalid && playertwo.errors.required ">
+      Player name are required.
+    </div>
+    <div *ngIf="playerone.invalid && playerone.errors.minlength || playertwo.invalid && playertwo.errors.minlength">
+      Player name must be at least 4 characters long.
+    </div>
+  </div>
+
+  <div class="formgroup">
+    <input type="text" class="form-control" formControlName="playerone" id="playerone" placeholder="Name player 1"
+          [ngClass]="{'is-invalid': playerone.invalid && (playerone.dirty || playerone.touched)}" required>
+
+    <input type="text" class="form-control" formControlName="playertwo" id="playertwo" placeholder="Name player 2"
+          [ngClass]="{'is-invalid': playertwo.invalid && (playertwo.dirty || playertwo.touched)}" required>
+    <br />
+    <button class="btn btn-lg btn-secondary btn-block" [disabled]="newGameForm.invalid" [ngClass]="{'btn-success': newGameForm.valid}">Start game</button>
+  </div>
+</form>
