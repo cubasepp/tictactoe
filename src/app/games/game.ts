@@ -2,10 +2,6 @@ export class Game {
   id: number;
 
   current_player: {};
-
-  //player_one: {}};
-  //player_two: string;
-
   players: Array<{ class: string, name: string }> = Array(
     { 'class': 'player_one', 'name': '' },
     { 'class': 'player_two', 'name': '' }

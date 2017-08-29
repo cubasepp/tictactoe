@@ -20,7 +20,6 @@ export class GamePlay implements OnInit  {
     this.route.paramMap
       .switchMap((params: ParamMap) => this.gameService.getGame(+params.get('id')))
       .subscribe((game) => {
-
         if (game) {
           this.game = game
         } else {
