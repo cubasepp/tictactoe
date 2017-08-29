@@ -24,28 +24,34 @@ body {
   opacity: 0;
   font-family: 'FontAwesome';
 }
+/* TODO < 700 px
+  height: 120px;
+  font-size: 5em;
+  please rotate
+*/
+
 .card-body:hover {
   background-color: #3d4250;
 }
-.playerone {
+.player_one {
   opacity: 1;
 }
-.playerone:after {
+.player_one:after {
   content: '\f00d';
 }
 
-.playerone.active {
+.player_one.active {
   background-color: #dc685a;
 }
 
-.playertwo {
+.player_two {
   opacity: 1;
 }
 
-.playertwo.active {
+.player_two.active {
   background-color: #ecaf4f;
 }
 
-.playertwo:after {
+.player_two:after {
   content: '\f10c';
 }

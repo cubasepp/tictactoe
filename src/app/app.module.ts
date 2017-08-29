@@ -8,14 +8,16 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard.component';
 import { PageNotFoundComponent } from './404.component';
 
-import { Game } from './games/game.component'
+import { GamePlay } from './games/game.component'
 import { NewGame } from './games/new.component';
 import { PlayerHandlingDirective } from './games/gamesboard.directive';
+
+import { GameService } from './games/game.service';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'game', component: NewGame },
-  { path: 'game/:id', component: Game },
+  { path: 'game/:id', component: GamePlay },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -25,7 +27,7 @@ const appRoutes: Routes = [
     AppComponent,
     DashboardComponent,
     PageNotFoundComponent,
-    Game,
+    GamePlay,
     NewGame,
     PlayerHandlingDirective
   ],
@@ -38,7 +40,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [GameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

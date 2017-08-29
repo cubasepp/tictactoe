@@ -2,33 +2,35 @@ import { Component, OnInit }                  from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { GameService } from './game.service';
+
 @Component({
   templateUrl: './new.component.html',
 
 })
 export class NewGame implements OnInit {
-  newGameForm: FormGroup
-
-  constructor(private router: Router) {}
+  newGameForm: FormGroup;
+  constructor(private gameService: GameService, private router: Router) {}
 
   ngOnInit(): void {
     this.newGameForm = new FormGroup({
-      'playerone': new FormControl('', [
+      'player_one': new FormControl('', [
         Validators.required,
         Validators.minLength(4)
       ]),
-      'playertwo': new FormControl('', [
+      'player_two': new FormControl('', [
         Validators.required,
         Validators.minLength(4)
       ])
     });
   }
 
-  get playerone() { return this.newGameForm.get('playerone'); }
-  get playertwo() { return this.newGameForm.get('playertwo'); }
+  get player_one() { return this.newGameForm.get('player_one'); }
+  get player_two() { return this.newGameForm.get('player_two'); }
 
   startGame(postData): void {
-    console.log(JSON.stringify(postData));
-    this.router.navigate(['/game', 1])
+    this.gameService.addGame(this.newGameForm.value.player_one, this.newGameForm.value.player_two).then(game => {
+      this.router.navigate(['/game', game.id])
+    });
   }
 }

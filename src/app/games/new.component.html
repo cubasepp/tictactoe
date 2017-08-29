@@ -1,22 +1,22 @@
-<form [formGroup]="newGameForm" class="form-newgame" (ngSubmit)="startGame(newGameForm.value)">
+<form [formGroup]="newGameForm" class="form-newgame" (ngSubmit)="startGame(newGameForm)">
   <h2> Please enter your Names </h2>
   <br />
 
-  <div *ngIf="(playerone.invalid && (playerone.dirty || playerone.touched)) || (playertwo.invalid && (playertwo.dirty || playertwo.touched))" class="alert alert-danger">
-     <div *ngIf="playerone.invalid && playerone.errors.required || playertwo.invalid && playertwo.errors.required ">
+  <div *ngIf="(player_one.invalid && (player_one.dirty || player_one.touched)) || (player_two.invalid && (player_two.dirty || player_two.touched))" class="alert alert-danger">
+     <div *ngIf="player_one.invalid && player_one.errors.required || player_two.invalid && player_two.errors.required ">
       Player name are required.
     </div>
-    <div *ngIf="playerone.invalid && playerone.errors.minlength || playertwo.invalid && playertwo.errors.minlength">
+    <div *ngIf="player_one.invalid && player_one.errors.minlength || player_two.invalid && player_two.errors.minlength">
       Player name must be at least 4 characters long.
     </div>
   </div>
 
   <div class="formgroup">
-    <input type="text" class="form-control" formControlName="playerone" id="playerone" placeholder="Name player 1"
-          [ngClass]="{'is-invalid': playerone.invalid && (playerone.dirty || playerone.touched)}" required>
+    <input type="text" class="form-control" formControlName="player_one" id="player_one" placeholder="Name player 1"
+          [ngClass]="{'is-invalid': player_one.invalid && (player_one.dirty || player_one.touched)}" required>
 
-    <input type="text" class="form-control" formControlName="playertwo" id="playertwo" placeholder="Name player 2"
-          [ngClass]="{'is-invalid': playertwo.invalid && (playertwo.dirty || playertwo.touched)}" required>
+    <input type="text" class="form-control" formControlName="player_two" id="player_two" placeholder="Name player 2"
+          [ngClass]="{'is-invalid': player_two.invalid && (player_two.dirty || player_two.touched)}" required>
     <br />
     <button class="btn btn-lg btn-secondary btn-block" [disabled]="newGameForm.invalid" [ngClass]="{'btn-success': newGameForm.valid}">Start game</button>
   </div>
