@@ -21,18 +21,19 @@ export class GamePlay implements OnInit  {
       .switchMap((params: ParamMap) => this.gameService.getGame(+params.get('id')))
       .subscribe((game) => {
         if (game) {
-          this.game = game
-        } else {
-          this.router.navigate(['/game']);
+            /* TODO */
+          } else {
+            this.router.navigate(['/game']);
         }
       });
   }
 
-  makeMove(event, x, y): void {
+  makeMove(event, id: number): void {
     // Append new class. I don't know a other solution yet.
     if (!event.target.classList.contains('active')) {
-      event.target.className = event.target.className + ' active';
-      this.game.switch_player();
+      if (this.game.makeMove(id)) {
+        event.target.className = event.target.className + ' active';
+      }
     }
   }
 }

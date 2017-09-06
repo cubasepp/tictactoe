@@ -33,25 +33,25 @@ body {
 .card-body:hover {
   background-color: #3d4250;
 }
-.player_one {
+.o {
   opacity: 1;
 }
-.player_one:after {
+.o:after {
   content: '\f00d';
 }
 
-.player_one.active {
+.o.active {
   background-color: #dc685a;
 }
 
-.player_two {
+.x {
   opacity: 1;
 }
 
-.player_two.active {
+.x.active {
   background-color: #ecaf4f;
 }
 
-.player_two:after {
+.x:after {
   content: '\f10c';
 }
