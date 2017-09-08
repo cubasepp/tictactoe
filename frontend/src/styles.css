@@ -1,0 +1,57 @@
+body {
+  padding-top: 5rem;
+}
+
+.form-newgame {
+    max-width: 450px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.card {
+    border-radius: 15px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.card-body {
+  border-radius: 14px;
+  height: 200px;
+  width: 100%;
+  font-size: 8em;
+  margin: 0 auto;
+  padding: unset;
+  text-align: center;
+  opacity: 0;
+  font-family: 'FontAwesome';
+}
+/* TODO < 700 px
+  height: 120px;
+  font-size: 5em;
+  please rotate
+*/
+
+.card-body:hover {
+  background-color: #3d4250;
+}
+.o {
+  opacity: 1;
+}
+.o:after {
+  content: '\f10c';
+}
+
+.o.active {
+  background-color: #dc685a;
+}
+
+.x {
+  opacity: 1;
+}
+
+.x.active {
+  background-color: #ecaf4f;
+}
+
+.x:after {
+  content: '\f00d';
+}
