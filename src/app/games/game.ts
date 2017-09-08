@@ -1,57 +1,29 @@
-export interface IPlayer {
+export class Player {
+  id: number;
+  game_id: number;
   name: string;
   sign: string;
 }
-export interface IGame {
+export class Game {
   id: number;
-  error: String;
-  squares: Array<string>;
+  moves: Array<string>;
 
-  player: Player;
-  players: Array<Player>;
-
-}
-
-export class Player implements IPlayer {
-  name: string;
-  sign: string;
-
-  constructor(name: string, sign: string) {
-    this.name = name;
-    this.sign = sign;
-  }
-}
-export class Game implements IGame {
-  id: number;
-  error: String;
-  squares: Array<string>;
-
-  player: Player;
+  player_id: number;
   players: Array<Player> = [];
 
-  constructor(id, players: Array<Player>) {
-    this.id = id;
-    this.squares = Array(9).fill(null);
-    this.players = players
-    this.player = this.players[0];
-  }
-
-  makeMove(id: number): boolean{
-    this.error = ''
-    if (this.squares[id]) {
-      this.error = "Move already exists."
+  public makeMove(id: number, sign: string): boolean{
+    if (this.moves[id]) {
       return false;
     }
     if (this.checkWinner()) {
       return false;
     }
-    this.squares[id] = this.player.sign;
-    this.player = (this.player.sign === this.players[0].sign) ? this.players[1] : this.players[0]
+    this.moves[id] = sign;
 
-    return true;
+		return true;
   }
 
-  checkWinner() {
+  public checkWinner(): boolean {
     const lines = [
       [0, 1, 2],
       [3, 4, 5],
@@ -64,15 +36,12 @@ export class Game implements IGame {
     ];
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
-      if (this.squares[a] && this.squares[a] === this.squares[b] && this.squares[a] === this.squares[c]) {
-        return this.player;
+      if (this.moves[a] && this.moves[a] === this.moves[b] &&
+          this.moves[a] === this.moves[c]) {
+        return true;
       }
     }
-    return null;
-  }
-
-  switch_player() {
-
+    return false;
   }
 
 }

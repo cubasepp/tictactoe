@@ -37,7 +37,7 @@ body {
   opacity: 1;
 }
 .o:after {
-  content: '\f00d';
+  content: '\f10c';
 }
 
 .o.active {
@@ -53,5 +53,5 @@ body {
 }
 
 .x:after {
-  content: '\f10c';
+  content: '\f00d';
 }

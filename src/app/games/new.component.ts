@@ -13,26 +13,28 @@ import { GameService } from './game.service';
 export class NewGame implements OnInit {
   game: Game
   public newGameForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private gameService: GameService, private router: Router) {}
+
+  constructor(private formBuilder: FormBuilder,
+              private gameService: GameService,
+              private router: Router) {}
 
   ngOnInit(): void {
     this.newGameForm = this.formBuilder.group({
-      'players': this.formBuilder.array([
+      'players_attributes': this.formBuilder.array([
         this.formBuilder.group({
-          name: ['', Validators.required, Validators.minLength(4)],
+          name: [''],
           sign: ['o']
         }),
         this.formBuilder.group({
-          name: ['', Validators.required, Validators.minLength(4)],
+          name: [''],
           sign: ['x']
         })
       ])
     })
   }
-
   startGame(): void {
-    this.gameService.addGame(this.newGameForm.value.players).then(game => {
-      this.router.navigate(['/game', game.id])
+    this.gameService.createGame(this.newGameForm.value).then(game => {
+      this.router.navigate(['/game', game.id]);
     });
   }
 }

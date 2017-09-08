@@ -1,30 +1,48 @@
 import { Injectable } from '@angular/core';
 import { Game, Player  } from './game';
+import { Headers, Http } from '@angular/http';
 
-import {Observable} from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class GameService {
-  games: Game[];
-  id: number
 
-  constructor() {
-    this.games = [];
-    this.id = 1
-  }
+  private headers = new Headers({'Content-Type': 'application/json'});
+  private gameUrl = '';
+
+  constructor(private http: Http) {}
 
   getGames(): Promise<Game[]> {
-    return Promise.resolve(this.games);
+    return this.http.get(this.gameUrl)
+      .toPromise()
+      .then(response => response.json().games as Game[])
+      .catch(this.handleError);
   }
 
-  addGame(players: Array<Player>): Promise<Game> {
-    var game = new Game(this.id++, players)
-    this.games.push(game);
-    return Promise.resolve(game);
+  createGame(params): Promise<Game> {
+    return this.http
+      .post(this.gameUrl + 'game', JSON.stringify(params))
+      .toPromise()
+      .then(res => res.json() as Game)
+      .catch(this.handleError);
   }
 
   getGame(id: number): Promise<Game> {
-    return this.getGames().then(games => games.find(game => game.id === id));
+    return this.http.get(this.gameUrl + 'game/' + id)
+      .toPromise()
+      .then(response => response.json() as Game[])
+      .catch(this.handleError);
+  }
+
+  makeMove(id: number, params): Promise<Game> {
+    return this.http
+      .post(this.gameUrl + 'game/' + id, JSON.stringify(params))
+      .toPromise()
+      .then(res => res.json() as Game)
+      .catch(this.handleError);
+  }
+
+  private handleError(error: any): Promise<any> {
+    return Promise.reject(error.message || error);
   }
 }
