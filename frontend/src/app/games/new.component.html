@@ -1,8 +1,8 @@
-<form [formGroup]="newGameForm" class="form-newgame" (ngSubmit)="startGame(newGameForm)">
+<form [formGroup]="newGameForm" class="form-newgame" (ngSubmit)="startGame()">
   <h2> Please enter your Names </h2>
   <br />
   <div formArrayName="players_attributes">
-    <div *ngFor="let player of newGameForm.controls.players_attributes.controls; let i=index" [formGroupName]="i" >
+    <div *ngFor="let player of newGameForm['controls'].players_attributes['controls']; let i=index" [formGroupName]="i" >
       <input class="form-control" formControlName="name" placeholder="Player name {{i + 1}}">
       <br/>
     </div>
