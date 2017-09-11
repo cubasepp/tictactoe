@@ -6,6 +6,6 @@
       <input class="form-control" formControlName="name" placeholder="Player name {{i + 1}}">
       <br/>
     </div>
-    <button class="btn btn-lg btn-secondary btn-block" >Start game</button>
+    <button class="btn btn-lg btn-success btn-block" [disabled]="newGameForm.invalid">Start game</button>
   </div>
 </form>

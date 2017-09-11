@@ -22,11 +22,11 @@ export class NewGame implements OnInit {
     this.newGameForm = this.formBuilder.group({
       'players_attributes': this.formBuilder.array([
         this.formBuilder.group({
-          name: [''],
+          name: ['', Validators.required],
           sign: ['o']
         }),
         this.formBuilder.group({
-          name: [''],
+          name: ['', Validators.required],
           sign: ['x']
         })
       ])
