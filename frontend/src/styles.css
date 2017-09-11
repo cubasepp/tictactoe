@@ -55,3 +55,7 @@ body {
 .x:after {
   content: '\f00d';
 }
+
+.fa-trophy {
+  color: #C39B00;
+}

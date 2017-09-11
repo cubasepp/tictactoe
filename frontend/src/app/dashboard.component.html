@@ -1,8 +1,58 @@
 
-<h3>Dashboard</h3>
-
-<ul>
- <li *ngFor="let game of games">
-  {{ game.id }}
- </li>
-</ul>
+<div class="row align-items-center">
+  <div class="col-sm-1">&nbsp;</div>
+  <div class="col-sm-10">
+    <button type="button" class="btn btn-success btn-block" [routerLink]="['/game']">New game</button>
+  </div>
+  <div class="col-sm-1">&nbsp;</div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    &nbsp;
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    &nbsp;
+  </div>
+</div>
+<div class="row align-items-center">
+  <div class="col-sm-1">&nbsp;</div>
+  <div class="col-sm-10">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Player 1</th>
+          <th>Player 2</th>
+          <th width="20px;">Status</th>
+          <th width="20px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let game of games | slice:start:start+steps">
+          <td>{{games.length}}{{ game.players[0].name }}</td>
+          <td>{{ game.players[1].name }}</td>
+          <td class="text-center"><i class="fa fa-trophy" aria-hidden="true" *ngIf="checkWin(game.moves)"></i></td>
+          <td><button type="button" [routerLink]="['/game', game.id]" class="btn btn-info btn-sm"> Show</button></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <nav aria-label="Page">
+              <ul class="pagination justify-content-center">
+                <li class="page-item" [ngClass]="{'disabled': start == 0}">
+                  <button class="page-link" (click)="start=start-2">Previous</button>
+                </li>
+                <li class="page-item" [ngClass]="{'disabled': start+steps > games?.length}">
+                  <button class="page-link" (click)="start=start+2">Next</button>
+                </li>
+              </ul>
+            </nav>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <div class="col-sm-1">&nbsp;</div>
+</div>
