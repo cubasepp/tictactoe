@@ -10,7 +10,7 @@ before do
   content_type 'application/json'
 end
 
-get "/" do
+get "/game" do
   JSON games: Game.all.as_json(include: :players)
 end
 
