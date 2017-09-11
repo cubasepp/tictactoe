@@ -30,7 +30,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let game of games | slice:start:start+steps">
-          <td>{{games.length}}{{ game.players[0].name }}</td>
+          <td>{{ game.players[0].name }}</td>
           <td>{{ game.players[1].name }}</td>
           <td class="text-center"><i class="fa fa-trophy" aria-hidden="true" *ngIf="checkWin(game.moves)"></i></td>
           <td><button type="button" [routerLink]="['/game', game.id]" class="btn btn-info btn-sm"> Show</button></td>
