@@ -7,7 +7,6 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class GameService {
 
-  private headers = new Headers({'Content-Type': 'application/json'});
   private gameUrl = '';
 
   constructor(private http: Http) {}
@@ -21,14 +20,14 @@ export class GameService {
 
   createGame(params): Promise<Game> {
     return this.http
-      .post(this.gameUrl + 'game', JSON.stringify(params))
+      .post(this.gameUrl, JSON.stringify(params))
       .toPromise()
       .then(res => res.json() as Game)
       .catch(this.handleError);
   }
 
   getGame(id: number): Promise<Game> {
-    return this.http.get(this.gameUrl + 'game/' + id)
+    return this.http.get(this.gameUrl + id)
       .toPromise()
       .then(response => response.json() as Game[])
       .catch(this.handleError);
@@ -36,7 +35,7 @@ export class GameService {
 
   makeMove(id: number, params): Promise<Game> {
     return this.http
-      .post(this.gameUrl + 'game/' + id, JSON.stringify(params))
+      .post(this.gameUrl + id, JSON.stringify(params))
       .toPromise()
       .then(res => res.json() as Game)
       .catch(this.handleError);
