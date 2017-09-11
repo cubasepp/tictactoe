@@ -8,7 +8,7 @@ import { Game, Player } from './game';
 import { GameService } from './game.service';
 
 @Component({
-  templateUrl: './game.component.html',
+  templateUrl: './play.component.html',
 })
 
 export class GamePlay implements OnInit  {

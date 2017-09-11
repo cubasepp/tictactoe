@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard.component';
 import { PageNotFoundComponent } from './404.component';
 
-import { GamePlay } from './games/game.component'
+import { GamePlay } from './games/play.component'
 import { NewGame } from './games/new.component';
 import { PlayerHandlingDirective } from './games/gamesboard.directive';
 
