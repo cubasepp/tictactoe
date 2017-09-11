@@ -6,3 +6,9 @@ To run that backend in production mode please use:
  `bundle exec puma -e production -b unix:///var/run/api.sock`
 
 If you want use it in daemon mode add `-d`
+
+# Databse
+
+To crate the database please use:
+  `bundle exec rake db:create`
+  `bundle exec rake db:migrate`
