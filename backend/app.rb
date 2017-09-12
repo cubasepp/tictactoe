@@ -1,15 +1,19 @@
 # app.rb
 require "sinatra"
 require "sinatra/activerecord"
+require "sinatra/cors"
 require "./models/game.rb"
 require "./models/player.rb"
 
 set :database, "sqlite3:tictactoe.sqlite3"
 
 class Api < Sinatra::Base
+  register Sinatra::Cors
+
+  set :allow_origin, ""
+  set :allow_methods, "GET,POST"
 
   before do
-    headers "Access-Control-Allow-Origin" => ""
     content_type "application/json"
   end
 
@@ -38,8 +42,8 @@ class Api < Sinatra::Base
       halt(422)
     end
   end
-  
-   not_found do
+
+  not_found do
     status 404
     redirect "", "rong place, buddy"
   end

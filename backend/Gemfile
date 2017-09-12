@@ -2,6 +2,7 @@
 source "http://rubygems.org"
 
 gem "sinatra-activerecord"
+gem "sinatra-cors"
 gem "rake"
 gem "sqlite3"
 gem "puma"
