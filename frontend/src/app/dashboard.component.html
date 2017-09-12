@@ -45,7 +45,7 @@
                   <button class="page-link" (click)="start=start-2">Previous</button>
                 </li>
                 <li class="page-item" [ngClass]="{'disabled': start+steps > games?.length}">
-                  <button class="page-link" (click)="start=start+2">Next</button>
+                  <button class="page-link" (click)="start=start+steps">Next</button>
                 </li>
               </ul>
             </nav>
