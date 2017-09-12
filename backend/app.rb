@@ -9,8 +9,8 @@ set :database, "sqlite3:tictactoe.sqlite3"
 class Api < Sinatra::Base
 
   before do
-    headers 'Access-Control-Allow-Origin' => ''
-    content_type 'application/json'
+    headers "Access-Control-Allow-Origin" => ""
+    content_type "application/json"
   end
 
   get "/game/" do
@@ -41,6 +41,6 @@ class Api < Sinatra::Base
   
    not_found do
     status 404
-    redirect "https://tictactoe.voglm.de", "rong place, buddy"
+    redirect "", "rong place, buddy"
   end
 end
