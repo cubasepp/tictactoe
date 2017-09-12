@@ -42,7 +42,7 @@
             <nav aria-label="Page">
               <ul class="pagination justify-content-center">
                 <li class="page-item" [ngClass]="{'disabled': start == 0}">
-                  <button class="page-link" (click)="start=start-2">Previous</button>
+                  <button class="page-link" (click)="start=start-steps">Previous</button>
                 </li>
                 <li class="page-item" [ngClass]="{'disabled': start+steps > games?.length}">
                   <button class="page-link" (click)="start=start+steps">Next</button>
