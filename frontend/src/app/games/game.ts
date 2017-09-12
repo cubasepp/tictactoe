@@ -20,7 +20,11 @@ export class Game {
     }
     this.moves[id] = sign;
 
-		return true;
+    return true;
+  }
+
+  public checkDraw(): boolean {
+    return this.moves.filter(move => move !== null).length === 9
   }
 
   public checkWinner(): boolean {

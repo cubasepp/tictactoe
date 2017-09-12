@@ -16,6 +16,7 @@ export class GamePlay implements OnInit  {
   player: Player;
 
   win: boolean = false;
+  draw: boolean = false;
 
   constructor(private gameService: GameService,
               private route: ActivatedRoute,
@@ -29,6 +30,7 @@ export class GamePlay implements OnInit  {
           this.game = Object.assign(new Game(), game)
           this.player = this.game.players.find(player => player.id == this.game.player_id)
           this.win = this.game.checkWinner()
+          this.draw = this.game.checkDraw()
         }
       );
   }
@@ -52,6 +54,7 @@ export class GamePlay implements OnInit  {
             (game) => {
               this.player = this.game.players.find(player => player.id == game.player_id)
               this.win = this.game.checkWinner()
+              this.draw = this.game.checkDraw()
           })
       }
     }
